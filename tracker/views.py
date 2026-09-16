@@ -208,7 +208,7 @@ def dashboard(request):
             "recent_applications": recent_applications,
         }
     )
-@login_required
+
 def register_view(request):
     form = RegisterForm()
 
