@@ -1,0 +1,19 @@
+{% extends "tracker/base.html" %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h1>Add Company</h1>
+
+    <form method="POST" class="form-card">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Add Company</button>
+    </form>
+
+</div>
+
+{% endblock %}

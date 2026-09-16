@@ -1,0 +1,53 @@
+{% extends "tracker/base.html" %}
+
+{% block content %}
+
+<div class="dashboard-cards">
+
+    <div> 
+        <h3>Companies</h3>
+        <p>{{ companies }}</p>
+    </div>
+
+    <div> 
+        <h3>Jobs</h3>
+        <p>{{ jobs }}</p>
+    </div>
+
+    <div> 
+        <h3>Applications</h3>
+        <p>{{ applications }}</p>
+    </div>
+
+    <div> 
+        <h3>Applied</h3>
+        <p>{{ applied }}</p>
+    </div>
+
+    <div> 
+        <h3>Interview</h3>
+        <p>{{ interview }}</p>
+    </div>
+
+    <div> 
+        <h3>Offers</h3>
+        <p>{{ offers }}</p>
+    </div>
+
+</div>
+
+<h2>Recent Applications</h2>
+
+{% for application in recent_applications %}
+
+    
+    <div class="application-card">
+        <p>{{ application.job.title }}</p>
+        <p>{{ application.job.company.name }}</p>
+        <p>{{ application.status }}</p>
+        <p>{{ application.applied_date }}</p>
+    </div>
+
+{% endfor %}
+
+{% endblock %}

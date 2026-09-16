@@ -1,0 +1,62 @@
+{% extends "tracker/base.html" %}
+
+{% block content %}
+
+<h1>Jobs</h1>
+<form method="GET">
+        <input
+            type="text"
+            name="search"
+            placeholder="Search jobs..."
+            value="{{ search }}"
+        >
+        <select name="location">
+        <option value="">All locations</option>
+
+        <option value="Bangalore" {% if location == "Bangalore" %}selected{% endif %}>
+            Bangalore
+        </option>
+        <option value="Hyderabad" {% if location == "Hyderabad" %}selected{% endif %}>
+            Hyderabad
+        </option>
+        <option value="Agra" {% if location == "Agra" %}selected{% endif %}>
+            Agra
+        </option>
+        <option value="Delhi" {% if location == "Delhi" %}selected{% endif %}>
+            Delhi
+        </option>
+        <option value="Mumbai" {% if location == "Mumbai" %}selected{% endif %}>
+            Mumbai
+        </option>
+
+    </select>
+
+        <select name="status">
+        <option value="">All Jobs</option>
+
+        <option value="OPEN" {% if status == "OPEN" %}selected{% endif %}>
+            Open
+        </option>
+
+        <option value="CLOSED" {% if status == "CLOSED" %}selected{% endif %}>
+            Closed
+        </option>
+
+    </select>
+
+    <button type="submit">Apply Filters</button>
+
+</form>
+<a class="btn-primary" href="{% url 'job_create' %}">Add Job</a>
+{% for job in jobs %}
+        <div class="job-card">
+        <strong>{{ job.title }}</strong><br>
+        Company: {{ job.company.name }}<br>
+        Location: {{ job.location }}<br>
+        Status: {{ job.status }}
+        <a class="btn" href="{% url 'job_update' job.id %}">Edit</a>
+        <a class="btn" href="{% url 'job_delete' job.id %}">Delete</a>
+        </div>
+{% endfor %}
+
+{% endblock %}

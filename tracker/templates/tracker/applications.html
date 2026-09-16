@@ -1,0 +1,49 @@
+{% extends "tracker/base.html" %}
+
+{% block content %}
+<table class="application-table">
+
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Company</th>
+            <th>Job Role</th>
+            <th>Status</th>
+            <th>Applied Date</th>
+            <th>Notes</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <a class="btn-primary" href="{% url 'application_create' %}">Add Application</a>
+
+        {% for application in applications %}
+
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ application.job.company.name }}</td>
+            <td>{{ application.job.title }}</td>
+            <td>{{ application.status }}</td>
+            <td>{{ application.applied_date }}</td>
+            <td>{{ application.notes }}</td>
+
+            <td>
+                <a class="btn" href="{% url 'application_update' application.id %}">
+                    Edit
+                </a>
+
+                <a class="btn" href="{% url 'application_delete' application.id %}">
+                    Delete
+                </a>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+    
+
+{% endblock %}

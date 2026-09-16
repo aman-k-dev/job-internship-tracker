@@ -1,0 +1,18 @@
+{% extends "tracker/base.html" %}
+
+{% block content %}
+
+<div class="confirm-card">
+
+    <h1>Delete Application</h1>
+
+    <p>Are you sure you want to delete this Application?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Application</button>
+    </form>
+
+</div>
+
+{% endblock %}

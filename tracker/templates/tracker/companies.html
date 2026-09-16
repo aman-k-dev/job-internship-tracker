@@ -1,0 +1,23 @@
+{% extends "tracker/base.html" %}
+{% block content %}
+<h1>Job & Internship Tracker</h1>
+
+<h2>Companies</h2>
+
+<a class="btn-primary" href="{% url 'company_create' %}">Add Company</a>
+
+{% for company in companies %}
+    <div class="company-row">
+    <span>{{ company.name }}</span>
+
+    <a class="btn" href="{% url 'company_update' company.id %}">
+        Edit
+    </a>
+    <a class="btn" href="{% url 'company_delete' company.id %}">
+        Delete
+    </a>
+</div>
+    {% endfor %}
+    
+
+{% endblock %}
